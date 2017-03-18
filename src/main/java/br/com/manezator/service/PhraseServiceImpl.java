@@ -17,14 +17,13 @@ public class PhraseServiceImpl implements PhraseService {
 	public PhraseRepository phraseRepository;
 	
 	public Phrase translate(String originalPhrase, Boolean manezes) {
-		phraseRepository.findAll();
-		return phraseRepository.findByTextAndManezes(originalPhrase.toLowerCase(), manezes);
+		return phraseRepository.findByTextAndManezes(originalPhrase.toLowerCase().trim(), manezes);
 	}
 
 	@Override
 	public void sendTraduction(String originalPhrase, String translatedPhrase, Boolean manezes) {
-		originalPhrase = originalPhrase.toLowerCase();
-		translatedPhrase = translatedPhrase.toLowerCase();
+		originalPhrase = originalPhrase.toLowerCase().trim();
+		translatedPhrase = translatedPhrase.toLowerCase().trim();
 		saveTraduction(originalPhrase, translatedPhrase, manezes);
 		saveTraduction(translatedPhrase, originalPhrase, !manezes);
 	}
@@ -34,6 +33,7 @@ public class PhraseServiceImpl implements PhraseService {
 		Phrase phrase = phraseRepository.findByTextAndManezes(originalPhrase, manezes);
 		
 		if(phrase == null){
+			
 			Phrase newPhrase = new Phrase();
 			newPhrase.setManezes(manezes);
 			newPhrase.setText(originalPhrase);
@@ -41,10 +41,12 @@ public class PhraseServiceImpl implements PhraseService {
 			traductions.add(new Traduction(translatedPhrase,1));
 			newPhrase.setTraductions(traductions);
 			phrase = newPhrase; 
+			
 		} else {
 			
 			List<Traduction> traductions = phrase.getTraductions();
 			
+			//TODO: Melhorar isso aqui, trazer já ordenado do banco!!!!
 			Traduction traduction = traductions.stream().filter(
 				value -> value.getText().equals(translatedPhrase)
 			).findFirst().orElse(null);

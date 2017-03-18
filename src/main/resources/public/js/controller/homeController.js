@@ -51,6 +51,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 	
 	$scope.invert = function(){
 		$scope.manezes = !$scope.manezes;
+		$scope.translate();
 	};
 	
 	$scope.sendTraduction = function(){

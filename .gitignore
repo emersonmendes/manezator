@@ -41,3 +41,5 @@ buildNumber.properties
  # poderia automatizar a geração do dados nessa pasta, não comitei ela, coloquei como ignore
  # não se já existe algo para projetos nesse estilo
 /heroku_build/
+/.classpath
+/.project
