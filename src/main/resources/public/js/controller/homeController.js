@@ -37,13 +37,10 @@ app.controller('HomeCtrl', function ($scope, $http) {
 			if(!result){
 				$scope.translatedPhrase = $scope.originalPhrase;
 			} else {
-				
 				var text = result.traductions[0].text;	
-				
 				$scope.translatedPhrase = treatPhrase(text);
-				
 				$scope.traductions = result.traductions;
-				
+				$scope.isEditing = false;
 			}
 			
 		});
