@@ -1554,3 +1554,26 @@ figure, h1, h2, h3, h4, h5, h6 {
 textarea {
     resize: none;
 }
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+    color: inherit;
+    background-color: #eee;
+}
+
+.send-traduction-feedback {
+	float: right;
+}
+
+.tooltip.tooltip-color .tooltip-inner {
+  color: #ffffff;
+  background-color: #7bceff;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  font-size: 14px;
+}
+
+.tooltip.tooltip-color .tooltip-arrow {
+  display: none;
+}

@@ -1,8 +1,5 @@
 app.controller('HomeCtrl', function ($scope, $http) {
 	
-	$scope.edit = function(){
-		$scope.isEditing = true;
-	};
 	
 	$scope.traductions = [];
 
@@ -26,7 +23,19 @@ app.controller('HomeCtrl', function ($scope, $http) {
 		
 	};
 	
+	$scope.cleanSendTraductionsFeedback = function(){
+		$scope.showSendTraductionsFeedback = false;
+	};
+	
+	$scope.edit = function(){
+		$scope.isEditing = true;
+		$scope.cleanSendTraductionsFeedback();
+	};
+	
 	$scope.translate = function(){
+		
+		$scope.cleanSendTraductionsFeedback();
+		
 		$http.get('home/translate',{
 			params : {
 				originalPhrase : $scope.originalPhrase,
@@ -58,6 +67,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 			manezes : $scope.manezes
 		}).success(function(){
 			$scope.isEditing = false;
+			$scope.showSendTraductionsFeedback = true;
 		});
 	};
 	

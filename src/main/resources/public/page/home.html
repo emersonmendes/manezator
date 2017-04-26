@@ -11,7 +11,7 @@
 							<div class="form-group">
 								<label ng-show="manezes">Manezêx</label>
 								<label ng-hide="manezes">Portuguêx</label>
-							  	<textarea ng-model="originalPhrase" class="form-control" rows="5" maxlength="200"></textarea>
+							  	<textarea ng-model="originalPhrase" class="form-control" rows="5" maxlength="200" ng-change="cleanSendTraductionsFeedback()"></textarea>
 							</div>
 						</div>
 						
@@ -22,13 +22,23 @@
 								<label ng-show="manezes">Portuguêx</label>
 								<div ng-show="!isEditing" class="jumbotron translated-board">
 									{{translatedPhrase}}
-									<div class="edit-button" ng-show="originalPhrase && translatedPhrase">
-										<a href="" ng-click="edit()" data-toggle="tooltip" data-placement="left" title="Ajuda a traduzí ai extepô!">
+									<div 
+										class="edit-button" 
+										ng-show="originalPhrase && translatedPhrase"
+										uib-tooltip="Tem uma tradução diferenti? Clica aqui e envia tua sugextão boca-mole!" 
+										tooltip-placement="left" 
+										tooltip-class="tooltip-color" 
+									>
+										<a href="" ng-click="edit()">
 											<i class="icon-pencil" aria-hidden="true"></i>
 										</a>
 									</div>
 								</div>
 							  	<textarea ng-show="isEditing" ng-model="translatedPhrase" class="form-control" rows="5" maxlength="200"></textarea>
+							</div>
+							
+							<div class="send-traduction-feedback" ng-if="showSendTraductionsFeedback">
+								Obrigado istepô <i class="icon-smile" aria-hidden="true"></i>
 							</div>
 							
 							<div class="action-buttons">
