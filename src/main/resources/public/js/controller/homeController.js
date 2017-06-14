@@ -55,7 +55,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 			}
 			
 		},function(){
-			alert("O estepô, déssi um erro no sixte! aviza la ox cara agora :(");
+			alert("O estepô, déssi um erro no sixtema! aviza la ox cara agora :(");
 		});
 	};
 	
@@ -73,7 +73,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 			$scope.isEditing = false;
 			$scope.showSendTraductionsFeedback = true;
 		},function(){
-			alert("O estepô, déssi um erro no sixte! aviza la ox cara agora :(");
+			alert("O estepô, déssi um erro no sixtema! aviza la ox cara agora :(");
 		});
 	};
 	
