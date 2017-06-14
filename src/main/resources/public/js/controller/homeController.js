@@ -41,7 +41,9 @@ app.controller('HomeCtrl', function ($scope, $http) {
 				originalPhrase : $scope.originalPhrase,
 				manezes : $scope.manezes
 			}
-		}).then(function(result){
+		}).then(function(response){
+			
+			var result = response.data;
 			
 			if(!result){
 				$scope.translatedPhrase = $scope.originalPhrase;
