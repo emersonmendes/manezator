@@ -41,7 +41,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 				originalPhrase : $scope.originalPhrase,
 				manezes : $scope.manezes
 			}
-		}).success(function(result){
+		}).then(function(result){
 			
 			if(!result){
 				$scope.translatedPhrase = $scope.originalPhrase;
@@ -52,6 +52,8 @@ app.controller('HomeCtrl', function ($scope, $http) {
 				$scope.isEditing = false;
 			}
 			
+		},function(){
+			alert("O estepô, déssi um erro no sixte! aviza la ox cara agora :(");
 		});
 	};
 	
@@ -65,9 +67,11 @@ app.controller('HomeCtrl', function ($scope, $http) {
 			originalPhrase : $scope.originalPhrase,
 			translatedPhrase : $scope.translatedPhrase,
 			manezes : $scope.manezes
-		}).success(function(){
+		}).then(function(){
 			$scope.isEditing = false;
 			$scope.showSendTraductionsFeedback = true;
+		},function(){
+			alert("O estepô, déssi um erro no sixte! aviza la ox cara agora :(");
 		});
 	};
 	
