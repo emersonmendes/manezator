@@ -2,9 +2,17 @@
 <html lang="en" ng-app="app" class="no-js">
 
 	<head>
-
-	    <title> Manézator </title>
-
+	
+		<title ng-bind="appMessage.system.title">
+			...
+	    </title>
+	    
+	    <style type="text/css">
+			[ng\:cloak], [ng-cloak], .ng-cloak {
+				display: none !important;
+			}
+		</style>
+		
 	    <link rel="icon" type="image/png" href="images/manezator_favicon.png?v=2">
 
 	    <meta charset="UTF-8">
@@ -48,7 +56,7 @@
 		        <div class="container">
 		            <div class="row copyright">
 		                <div class="col-md-12 text-center">
-		                    <span class="block">&copy; 2017 Manezator. Todux dereitux reservadu.</span>
+		                    <span class="block">&copy; {{appMessage.system.footTitle}}</span>
 		                    <ul class="fh5co-social-icons">
 		                        <li><a href="http://fb.me/manezator" target="_blank"><i class="icon-twitter"></i></a></li>
 		                        <li><a href="http://fb.me/manezator" target="_blank"><i class="icon-facebook"></i></a></li>

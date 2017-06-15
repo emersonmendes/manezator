@@ -12,3 +12,11 @@ app.config(function($routeProvider){
         );
 
 });
+
+app.run(function($rootScope, $http) {
+	$http.get("message/appMessage.json").then((response) => {
+		$rootScope.appMessage = response.data;
+	},() => {
+		console.error("Erro ao carregar as mensagens do sistema");
+	});
+});

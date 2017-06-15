@@ -1,0 +1,19 @@
+{
+	"system" : {
+
+		"title" : "Manézator",
+		"footTitle" : "2017 Manezator. Todux dereitux reservadu.",
+		
+		"home" : {
+			"manezes" : "Manézês",
+			"portugues" : "Português",
+			"tooltipSendSuggestion" : "Tem uma tradução diferenti? Clica aqui e envia tua sugextão boca-mole!",
+			"buttonSendSuggestion" : "Enviá Sugeshtão",
+			"sendTraductionFeedback" : "Obrigado istepô",
+			"translate" : "Traduzí",
+			"invert" : "Invertê Tradução",
+			"textTranslatePlaceholder" : "bota aqui o qui tu qué traduzi mô quirido"
+		}
+		
+	}
+}

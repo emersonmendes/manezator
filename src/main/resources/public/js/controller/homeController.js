@@ -5,6 +5,10 @@ app.controller('HomeCtrl', function (
 	$scope.traductions = [];
 
 	$scope.manezes = false;
+	$scope.formData = {
+		originalPhrase : "",
+		translatedPhrase : ""
+	};
 	
 	var isUpperCase = function(value){
 		return value === value.toUpperCase();
@@ -12,11 +16,11 @@ app.controller('HomeCtrl', function (
 	
 	var treatPhrase = function(value){
 		
-		if(isUpperCase($scope.originalPhrase)){
+		if(isUpperCase($scope.formData.originalPhrase)){
 			return value.toUpperCase();
 		}
 		
-		if(isUpperCase($scope.originalPhrase.charAt(0))){
+		if(isUpperCase($scope.formData.originalPhrase.charAt(0))){
 			return value.charAt(0).toUpperCase() + value.substr(1);
 		}
 		
@@ -37,14 +41,14 @@ app.controller('HomeCtrl', function (
 		
 		$scope.cleanSendTraductionsFeedback();
 		
-		homeService.translate($scope.originalPhrase, $scope.manezes, (result) => {
+		homeService.translate($scope.formData.originalPhrase, $scope.manezes, (result) => {
 			
 			if(!result){
-				$scope.translatedPhrase = $scope.originalPhrase;
+				$scope.formData.translatedPhrase = angular.copy($scope.formData.originalPhrase);
 			} else {
 				var text = result.traductions[0].text;	
-				$scope.translatedPhrase = treatPhrase(text);
-				$scope.traductions = result.traductions;
+				$scope.formData.translatedPhrase = angular.copy(treatPhrase(text));
+				$scope.traductions = angular.copy(result.traductions);
 				$scope.isEditing = false;
 			}
 			
@@ -59,8 +63,8 @@ app.controller('HomeCtrl', function (
 	
 	$scope.sendTraduction = function(){
 		homeService.sendTraduction({ 
-			originalPhrase: $scope.originalPhrase, 
-			translatedPhrase: $scope.translatedPhrase,
+			originalPhrase: $scope.formData.originalPhrase, 
+			translatedPhrase: $scope.formData.translatedPhrase,
 			manezes: $scope.manezes
 		}, ()=>{
 			$scope.isEditing = false;

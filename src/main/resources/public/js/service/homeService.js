@@ -10,7 +10,7 @@ app.factory('homeService', function ($http, $q) {
 				originalPhrase : originalPhrase,
 				manezes : manezes
 			}
-		}).then(function(response){
+		}).then((response) => {
 			callback && callback(response.data);
 		},showGenericError);
 	};
@@ -20,7 +20,7 @@ app.factory('homeService', function ($http, $q) {
 			originalPhrase : params.originalPhrase,
 			translatedPhrase : params.translatedPhrase,
 			manezes : params.manezes
-		}).then(function(){
+		}).then(() => {
 			callback();
 		},showGenericError);
 	};
@@ -35,9 +35,9 @@ app.factory('homeService', function ($http, $q) {
 					phrase : phrase,
 					manezes : manezes
 				}
-			}).then(function(response){
+			}).then((response) => {
 				
-				deferred.resolve(response.data.map( function (value) {
+				deferred.resolve(response.data.map((value) => {
 			        return {
 			            value: value && value.text.toLowerCase(),
 			            display: value && value.text
