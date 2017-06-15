@@ -17,7 +17,7 @@ public class PhraseServiceImpl implements PhraseService {
 	public PhraseRepository phraseRepository;
 	
 	public Phrase translate(String originalPhrase, Boolean manezes) {
-		return phraseRepository.findByTextAndManezes(originalPhrase.toLowerCase().trim(), manezes);
+		return phraseRepository.findOneByTextAndManezes(originalPhrase.toLowerCase().trim(), manezes);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class PhraseServiceImpl implements PhraseService {
 
 	private void saveTraduction(String originalPhrase, String translatedPhrase, Boolean manezes) {
 		
-		Phrase phrase = phraseRepository.findByTextAndManezes(originalPhrase, manezes);
+		Phrase phrase = phraseRepository.findOneByTextAndManezes(originalPhrase, manezes);
 		
 		if(phrase == null){
 			
@@ -61,6 +61,11 @@ public class PhraseServiceImpl implements PhraseService {
 		
 		phraseRepository.save(phrase);
 		
+	}
+
+	@Override
+	public List<Phrase> find(String phrase, Boolean manezes) {
+		return phraseRepository.findByTextAndManezes(phrase.toLowerCase().trim(), manezes);
 	}
     
 }

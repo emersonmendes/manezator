@@ -1,5 +1,6 @@
 package br.com.manezator.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class HomeController {
     public ResponseEntity<Void> sendTraduction(@RequestBody Map<String,Object> phrases) {
     	phraseService.sendTraduction(phrases.get("originalPhrase").toString(), phrases.get("translatedPhrase").toString(), (Boolean) phrases.get("manezes"));
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public ResponseEntity<List<Phrase>> find(@RequestParam("phrase") String phrase, @RequestParam("manezes") Boolean manezes) {
+        return new ResponseEntity<List<Phrase>>(phraseService.find(phrase, manezes), HttpStatus.OK);
     }
 
 }

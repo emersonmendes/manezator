@@ -1,5 +1,6 @@
-app.controller('HomeCtrl', function ($scope, $http) {
-	
+app.controller('HomeCtrl', function (
+	$scope, homeService
+) {
 	
 	$scope.traductions = [];
 
@@ -36,14 +37,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 		
 		$scope.cleanSendTraductionsFeedback();
 		
-		$http.get('home/translate',{
-			params : {
-				originalPhrase : $scope.originalPhrase,
-				manezes : $scope.manezes
-			}
-		}).then(function(response){
-			
-			var result = response.data;
+		homeService.translate($scope.originalPhrase, $scope.manezes, (result) => {
 			
 			if(!result){
 				$scope.translatedPhrase = $scope.originalPhrase;
@@ -54,9 +48,8 @@ app.controller('HomeCtrl', function ($scope, $http) {
 				$scope.isEditing = false;
 			}
 			
-		},function(){
-			alert("O estepô, déssi um erro no sixtema! aviza la ox cara agora :(");
 		});
+		
 	};
 	
 	$scope.invert = function(){
@@ -65,16 +58,22 @@ app.controller('HomeCtrl', function ($scope, $http) {
 	};
 	
 	$scope.sendTraduction = function(){
-		$http.post('home/sendTraduction',{
-			originalPhrase : $scope.originalPhrase,
-			translatedPhrase : $scope.translatedPhrase,
-			manezes : $scope.manezes
-		}).then(function(){
+		homeService.sendTraduction({ 
+			originalPhrase: $scope.originalPhrase, 
+			translatedPhrase: $scope.translatedPhrase,
+			manezes: $scope.manezes
+		}, ()=>{
 			$scope.isEditing = false;
 			$scope.showSendTraductionsFeedback = true;
-		},function(){
-			alert("O estepô, déssi um erro no sixtema! aviza la ox cara agora :(");
 		});
+	};
+	
+	$scope.findPhrases = function(phrase){
+		return homeService.findPhrases(phrase, $scope.manezes);
+	};
+	
+	$scope.selectedItemChange = function(item){
+		$scope.translate();
 	};
 	
 });

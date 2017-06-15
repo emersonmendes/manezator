@@ -50,5 +50,4 @@ public class Phrase {
 	public void setManezes(Boolean manezes) {
 		this.manezes = manezes;
 	}
-    
 }

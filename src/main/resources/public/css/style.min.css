@@ -108,7 +108,8 @@ figure, h1, h2, h3, h4, h5, h6 {
 }
 
 .fh5co-nav .top-menu {
-	padding: 0px 0
+	padding: 0px 0;
+	background: #f1f1f1;
 }
 
 .fh5co-nav .top {
@@ -369,16 +370,6 @@ figure, h1, h2, h3, h4, h5, h6 {
 	transform: scale(1.2)
 }
 
-.fh5co-cover {
-	height: 800px;
-	background-size: cover;
-	background-position: top center;
-	background-repeat: no-repeat;
-	position: relative;
-	float: left;
-	width: 100%
-}
-
 .fh5co-cover .overlay {
 	z-index: 0;
 	position: absolute;
@@ -397,7 +388,7 @@ figure, h1, h2, h3, h4, h5, h6 {
 	z-index: 9;
 	display: table;
 	width: 100%;
-	margin-top: 100px
+	margin-top: 150px;
 }
 
 .fh5co-cover.fh5co-cover-sm {
@@ -616,13 +607,6 @@ figure, h1, h2, h3, h4, h5, h6 {
     left: 0;
     bottom: 0;
     width: 100%;
-}
-
-@media screen and (max-width:768px) {
-	#fh5co-about, #fh5co-contact, #fh5co-footer, #fh5co-project,
-		#fh5co-services, #fh5co-started, #fh5co-testimonial {
-		padding: 0
-	}
 }
 
 .iphone {
@@ -1055,10 +1039,6 @@ figure, h1, h2, h3, h4, h5, h6 {
 	font-size: 15px;
 	letter-spacing: 2px;
 	text-transform: uppercase
-}
-
-#fh5co-footer .copyright .block {
-	display: block
 }
 
 #fh5co-offcanvas {
@@ -1528,12 +1508,6 @@ figure, h1, h2, h3, h4, h5, h6 {
 	padding: 5px 12px !important
 }
 
-.table-respostas {
-	max-height: 300px;
-	overflow-y: scroll;
-	width: 100%
-}
-
 .translated-board {
 	padding: 4px 14px !important;
 	height: 140px;
@@ -1547,7 +1521,6 @@ figure, h1, h2, h3, h4, h5, h6 {
 }
 
 .edit-button {
-/* 	text-align: right; */
 	float: right;
 }
 
@@ -1576,4 +1549,78 @@ textarea {
 
 .tooltip.tooltip-color .tooltip-arrow {
   display: none;
+}
+
+md-autocomplete md-autocomplete-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    box-sizing: border-box;
+    position: relative;
+    overflow: visible;
+    height: 138px;
+    -webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px;
+}
+
+md-autocomplete md-autocomplete-wrap .md-whiteframe-1dp, .md-whiteframe-z1 {
+	box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+md-autocomplete input:not(.md-input) {
+    font-size: 14px;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 40px;
+    height: 40px;
+    font-size: 19px;
+}
+
+@media screen and (max-width:768px) {
+	
+	#fh5co-about, #fh5co-contact, #fh5co-footer, #fh5co-project,
+		#fh5co-services, #fh5co-started, #fh5co-testimonial {
+		padding: 0
+	}
+	
+	.left-box {
+		padding-bottom: 47px;
+	}
+	
+	.right-box {
+		padding-top: 47px;
+	}
+	
+	md-autocomplete input:not(.md-input) {
+		font-size: 14px;
+	}
+	
+	#fh5co-footer .copyright .block {
+    	font-size: 12px;
+	}	
+	
+}
+
+#fh5co-footer .copyright .block {
+	font-size: 14px;
+}	
+
+.fh5co-cover {
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	position: relative;
+	float: left;
+	width: 100%
 }
