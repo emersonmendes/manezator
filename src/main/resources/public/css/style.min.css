@@ -1595,11 +1595,11 @@ md-autocomplete input:not(.md-input) {
 	}
 	
 	.left-box {
-		padding-bottom: 47px;
+		padding-bottom: 30px;
 	}
 	
 	.right-box {
-		padding-top: 47px;
+		padding-top: 30px;
 	}
 	
 	md-autocomplete input:not(.md-input) {
@@ -1609,6 +1609,43 @@ md-autocomplete input:not(.md-input) {
 	#fh5co-footer .copyright .block {
     	font-size: 12px;
 	}	
+	
+	md-autocomplete md-autocomplete-wrap {
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: flex;
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: row;
+	    flex-direction: row;
+	    box-sizing: border-box;
+	    position: relative;
+	    overflow: visible;
+	    height: 90px;
+	    -webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		-ms-border-radius: 4px;
+		border-radius: 4px;
+	}
+	
+	.translated-board {
+	    padding: 4px 14px !important;
+	    height: 90px;
+	    text-align: left !important;
+	    font-size: 19px;
+	    color: #6d6d6d;
+	}
+	
+	.fh5co-cover .display-t, .fh5co-cover .display-tc {
+	    z-index: 9;
+	    display: table;
+	    width: 100%;
+	    margin-top: 60px;
+	}
+	
+	.image-logo {
+		height: 30px;
+	}
 	
 }
 
