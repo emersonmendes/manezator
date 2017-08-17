@@ -109,7 +109,6 @@ figure, h1, h2, h3, h4, h5, h6 {
 
 .fh5co-nav .top-menu {
 	padding: 0px 0;
-	background: #f1f1f1;
 }
 
 .fh5co-nav .top {
@@ -467,7 +466,7 @@ figure, h1, h2, h3, h4, h5, h6 {
 	display: -moz-inline-stack;
 	display: inline-block;
 	zoom: 1;
-	color: #7bceff;
+	color: #000000;
 	padding-left: 10px;
 	padding-right: 10px
 }
@@ -565,18 +564,17 @@ figure, h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 30px
 }
 
-#fh5co-counter .display-tc .btn, #fh5co-header .display-tc .btn,
-	.fh5co-cover .display-tc .btn {
-	padding: 15px 30px;
-	background: #7bceff !important;
-	color: #fff;
-	border: none !important;
-	font-size: 15px
+#fh5co-counter .display-tc .btn, #fh5co-header .display-tc .btn, .fh5co-cover .display-tc .btn {
+    padding: 15px 30px;
+    background: #4977e2 !important;
+    color: #fff;
+    border: none !important;
+    font-size: 15px;
 }
 
 #fh5co-counter .display-tc .btn:hover, #fh5co-header .display-tc .btn:hover,
 	.fh5co-cover .display-tc .btn:hover {
-	background: #7bceff !important;
+	background: #4977e2 !important;
 	-webkit-box-shadow: 0 14px 30px -15px rgba(0, 0, 0, .75) !important;
 	-moz-box-shadow: 0 14px 30px -15px rgba(0, 0, 0, .75) !important;
 	box-shadow: 0 14px 30px -15px rgba(0, 0, 0, .75) !important
@@ -1660,4 +1658,10 @@ md-autocomplete input:not(.md-input) {
 	position: relative;
 	float: left;
 	width: 100%
+}
+
+hr {
+	border-top: 4px solid #4977e2; 
+	margin-top: 0px;
+    margin-bottom: 0px;
 }
