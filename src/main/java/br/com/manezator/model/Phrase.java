@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
+import lombok.Data;
+
 /**
  * @author Emerson Mendes
  * @mail emerson.emendes@gmail.com
  **/
+
+@Data
 public class Phrase {
 
     @Id
@@ -18,36 +22,5 @@ public class Phrase {
     private List<Traduction> traductions;
     
     private Boolean manezes;
-    
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public List<Traduction> getTraductions() {
-		return traductions;
-	}
-
-	public void setTraductions(List<Traduction> traductions) {
-		this.traductions = traductions;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public Boolean getManezes() {
-		return manezes;
-	}
-
-	public void setManezes(Boolean manezes) {
-		this.manezes = manezes;
-	}
+  
 }

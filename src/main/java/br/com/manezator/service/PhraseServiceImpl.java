@@ -38,7 +38,7 @@ public class PhraseServiceImpl implements PhraseService {
 			newPhrase.setManezes(manezes);
 			newPhrase.setText(originalPhrase);
 			ArrayList<Traduction> traductions = new ArrayList<>();
-			traductions.add(new Traduction(translatedPhrase,1));
+			traductions.add(new Traduction(1,translatedPhrase));
 			newPhrase.setTraductions(traductions);
 			phrase = newPhrase; 
 			
@@ -52,7 +52,7 @@ public class PhraseServiceImpl implements PhraseService {
 			).findFirst().orElse(null);
 			
 			if(traduction == null){
-				traductions.add(new Traduction(translatedPhrase,1));
+				traductions.add(new Traduction(1,translatedPhrase));
 			} else {
 				traduction.setRelevancy(traduction.getRelevancy() + 1);
 			}
