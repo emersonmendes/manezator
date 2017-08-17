@@ -1,5 +1,6 @@
 package br.com.manezator.model;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,8 @@ public class Phrase {
     private String id;
     
     private String text;
+    
+    private Date register;
     
     private List<Traduction> traductions;
     
