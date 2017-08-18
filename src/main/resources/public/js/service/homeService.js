@@ -27,6 +27,8 @@ app.factory('homeService', function ($http, $q) {
 	
 	_findPhrases = function(phrase, manezes){
 		
+		phrase = phrase.replace(new RegExp("\\\\", "g"),"");
+		
 		var deferred = $q.defer();
 		
 		if(phrase)
