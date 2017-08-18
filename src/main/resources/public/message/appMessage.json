@@ -2,17 +2,17 @@
 	"system" : {
 
 		"title" : "Manézator",
-		"footTitle" : "2017 Manezator. Todux dereitux reservadu.",
+		"footTitle" : "2017 Manezator. Todux direitux rezervadu.",
 		
 		"home" : {
-			"manezes" : "Manézês",
-			"portugues" : "Português",
+			"manezes" : "Manézêx",
+			"portugues" : "Portuguêx",
 			"tooltipSendSuggestion" : "Tem uma tradução diferenti? Clica aqui e envia tua sugextão boca-mole!",
-			"buttonSendSuggestion" : "Enviá Sugeshtão",
+			"buttonSendSuggestion" : "Enviá Sugextão",
 			"sendTraductionFeedback" : "Obrigado istepô",
 			"translate" : "Traduzí",
 			"invert" : "Invertê Tradução",
-			"textTranslatePlaceholder" : "Dish oqui tu qué traduzi mô quirido"
+			"textTranslatePlaceholder" : "Dix o qui tu qué traduzi mô quirido"
 		}
 		
 	}

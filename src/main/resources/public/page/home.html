@@ -40,23 +40,25 @@
 									<label ng-hide="manezes">{{appMessage.system.home.manezes}}</label>
 									<label ng-show="manezes">{{appMessage.system.home.portugues}}</label>
 									
-									<div ng-if="!isEditing" class="jumbotron translated-board">
-										{{formData.translatedPhrase}}
+									<div ng-hide="isEditing" class="jumbotron translated-board">
 										<div 
-											class="edit-button" 
-											ng-show="formData.originalPhrase && formData.translatedPhrase"
-											uib-tooltip="{{appMessage.system.home.tooltipSendSuggestion}}" 
-											tooltip-placement="left" 
-											tooltip-class="tooltip-color" 
-										>
+												class="edit-button" 
+												ng-show="formData.originalPhrase && formData.translatedPhrase"
+												uib-tooltip="{{appMessage.system.home.tooltipSendSuggestion}}" 
+												tooltip-placement="left" 
+												tooltip-class="tooltip-color" 
+											>
 											<a href="" ng-click="edit()">
 												<i class="icon-pencil" aria-hidden="true"></i>
 											</a>
 										</div>
+										<p>
+											{{formData.translatedPhrase}}
+										</p>
 									</div>
 								  	
 								  	<textarea 
-								  		ng-if="isEditing" 
+								  		ng-show="isEditing" 
 								  		ng-model="formData.translatedPhrase" 
 								  		class="form-control" 
 								  		rows="3" 
@@ -81,7 +83,7 @@
 					                </button>
 									
 									<button 
-										ng-if="isEditing" 
+										ng-show="isEditing" 
 										type="button" 
 										class="btn btn-primary" 
 										ng-click="sendTraduction()" 

@@ -1,5 +1,5 @@
 app.controller('HomeCtrl', function (
-	$scope, homeService
+	$scope, homeService, $filter
 ) {
 	
 	$scope.traductions = [];
@@ -9,6 +9,14 @@ app.controller('HomeCtrl', function (
 		originalPhrase : "",
 		translatedPhrase : ""
 	};
+	
+	$scope.$watch('formData.translatedPhrase',() => {
+		$scope.formData.translatedPhrase = $filter('limitTo')($scope.formData.translatedPhrase, 117,0);
+	});
+	
+	$scope.$watch('formData.originalPhrase',() => {
+		$scope.formData.originalPhrase = $filter('limitTo')($scope.formData.originalPhrase, 117,0);
+	});
 	
 	var isUpperCase = function(value){
 		return value === value.toUpperCase();
