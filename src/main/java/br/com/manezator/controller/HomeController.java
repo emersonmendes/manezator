@@ -29,7 +29,11 @@ public class HomeController {
     
     @RequestMapping(value = "/sendTraduction", method = RequestMethod.POST)
     public ResponseEntity<Void> sendTraduction(@RequestBody Map<String,Object> phrases) {
-    	phraseService.sendTraduction(phrases.get("originalPhrase").toString(), phrases.get("translatedPhrase").toString(), (Boolean) phrases.get("manezes"));
+    	phraseService.sendTraduction(
+    		phrases.get("originalPhrase").toString(), 
+    		phrases.get("translatedPhrase").toString(),
+    		(Boolean) phrases.get("manezes")
+    	);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
     

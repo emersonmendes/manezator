@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -40,12 +41,13 @@ public class PhraseRepositoryImpl implements PhraseRepositoryCustom {
 	}
 
 	@Override
-	public List<Phrase> findByTextAndManezes(String phrase, Boolean manezes) {
+	public List<Phrase> findByTextAndManezesOrderByPhraseAsc(String phrase, Boolean manezes) {
 		
 		Query query = new Query();
 		query.addCriteria(Criteria.where("manezes").is(manezes));
 		query.addCriteria(Criteria.where("text").regex(phrase));
 		query.limit(5);
+		query.with(new Sort(Sort.Direction.ASC, "text"));
 		
 		return mongoOperations.find(query, Phrase.class);
 		

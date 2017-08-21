@@ -1,36 +1,35 @@
 package br.com.manezator.config;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
+import static java.util.Collections.singletonList;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import static java.util.Collections.singletonList;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 
 @Configuration
-@EnableMongoRepositories("br.com.manezator.repository")
 public class MongoConfig extends AbstractMongoConfiguration {
 
-	@Value("${spring.data.mongodb.host}")
+	@Value("${mongodb.host}")
 	private String host;
 
-	@Value("${spring.data.mongodb.port}")
+	@Value("${mongodb.port}")
 	private Integer port;
 
-	@Value("${spring.data.mongodb.username}")
+	@Value("${mongodb.username}")
 	private String username;
 
-	@Value("${spring.data.mongodb.database}")
+	@Value("${mongodb.database}")
 	private String database;
 
-	@Value("${spring.data.mongodb.password}")
+	@Value("${mongodb.password}")
 	private String password;
 
 	@Bean
@@ -51,8 +50,10 @@ public class MongoConfig extends AbstractMongoConfiguration {
 	@Override
 	@Bean
 	public Mongo mongo() throws Exception {
-		return new MongoClient(singletonList(new ServerAddress(host, port)),
-				singletonList(MongoCredential.createCredential(username, database, password.toCharArray())));
+		return new MongoClient(
+			singletonList(new ServerAddress(host, port)),
+			singletonList(MongoCredential.createCredential(username, database, password.toCharArray()))
+		);
 	}
 
 }

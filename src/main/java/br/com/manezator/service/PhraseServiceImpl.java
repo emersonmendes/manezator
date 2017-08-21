@@ -22,14 +22,22 @@ public class PhraseServiceImpl implements PhraseService {
 	}
 
 	@Override
-	public void sendTraduction(String originalPhrase, String translatedPhrase, Boolean manezes) {
+	public void sendTraduction(
+		String originalPhrase, 
+		String translatedPhrase, 
+		Boolean manezes
+	) {
 		originalPhrase = originalPhrase.toLowerCase().trim();
 		translatedPhrase = translatedPhrase.toLowerCase().trim();
 		saveTraduction(originalPhrase, translatedPhrase, manezes);
 		saveTraduction(translatedPhrase, originalPhrase, !manezes);
 	}
 
-	private void saveTraduction(String originalPhrase, String translatedPhrase, Boolean manezes) {
+	private void saveTraduction(
+		String originalPhrase, 
+		String translatedPhrase, 
+		Boolean manezes
+	) {
 		
 		Phrase phrase = phraseRepository.findOneByTextAndManezes(originalPhrase, manezes);
 		
@@ -68,7 +76,7 @@ public class PhraseServiceImpl implements PhraseService {
 
 	@Override
 	public List<Phrase> find(String phrase, Boolean manezes) {
-		return phraseRepository.findByTextAndManezes(phrase.toLowerCase().trim(), manezes);
+		return phraseRepository.findByTextAndManezesOrderByPhraseAsc(phrase.toLowerCase().trim(), manezes);
 	}
     
 }

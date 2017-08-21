@@ -8,6 +8,6 @@ public interface PhraseRepositoryCustom  {
 
 	Phrase findOneByTextAndManezes(String lowerCase, Boolean manezes);
 	
-	List<Phrase> findByTextAndManezes(String phrase, Boolean manezes);
+	List<Phrase> findByTextAndManezesOrderByPhraseAsc(String phrase, Boolean manezes);
 	
 }

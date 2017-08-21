@@ -8,18 +8,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-@EnableAutoConfiguration
-@ComponentScan({
-    "br.com.manezator.controller",
-    "br.com.manezator.service",
-    "br.com.manezator.component"
-})
-@Import(MongoConfig.class)
 @EnableScheduling
+@EnableAutoConfiguration
+@ComponentScan("br.com.manezator.component")
+@Import({ AppConfig.class, MongoConfig.class })
 public class Application {
-
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
-
 }
