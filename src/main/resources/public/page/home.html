@@ -1,106 +1,101 @@
 <header id="fh5co-header" class="fh5co-cover" role="banner" data-stellar-background-ratio="0.5">
     
-    <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-                <form novalidate class="simple-form">
-	                <div class="display-t">
-	                    <div style="text-align: center;" class="display-tc animate-box" data-animate-effect="fadeIn">
+	<div class="row">
+		<div class="col-md-12">
+	     	<form novalidate class="simple-form">
+				<div class="display-t">
+					<div style="text-align: center;" class="display-tc animate-box" data-animate-effect="fadeIn">
+		
+						<div class="col-md-6 left-box">
+								
+							<label ng-show="manezes">{{appMessage.system.home.manezes}}</label>
+							<label ng-hide="manezes">{{appMessage.system.home.portugues}}</label>
 							
-							<div class="container col-md-6 left-box">
-								<div class="form-group">
-									
-									<label ng-show="manezes">{{appMessage.system.home.manezes}}</label>
-									<label ng-hide="manezes">{{appMessage.system.home.portugues}}</label>
-									
-									<md-autocomplete
-								    	md-no-cache="true"
-								        md-search-text="formData.originalPhrase"
-								        md-items="item in findPhrases(formData.originalPhrase)"
-								        md-item-text="item.display"
-								        md-min-length="2"
-								        placeholder="{{appMessage.system.home.textTranslatePlaceholder}}"
-								        md-selected-item-change="selectedItemChange(item)"
-								    >
-								        
-								        <md-item-template>
-								          	<span md-highlight-text="formData.originalPhrase" md-highlight-flags="^i">{{item.display}}</span>
-								        </md-item-template>
-								        
-								    </md-autocomplete>
-								
-								
-								</div>
-							</div>
+							<md-autocomplete
+						    	md-no-cache="true"
+						        md-search-text="formData.originalPhrase"
+						        md-items="item in findPhrases(formData.originalPhrase)"
+						        md-item-text="item.display"
+						        md-min-length="2"
+						        placeholder="{{appMessage.system.home.textTranslatePlaceholder}}"
+						        md-selected-item-change="selectedItemChange(item)"
+						    >
+						        
+						        <md-item-template>
+						          	<span md-highlight-text="formData.originalPhrase" md-highlight-flags="^i">{{item.display}}</span>
+						        </md-item-template>
+						        
+						    </md-autocomplete>
 							
-							<div class="container col-md-6 right-box">
+						</div>
+		
+						<div class="col-md-6 right-box">
+							
+							<div>
 								
-								<div class="form-group">
-									
-									<label ng-hide="manezes">{{appMessage.system.home.manezes}}</label>
-									<label ng-show="manezes">{{appMessage.system.home.portugues}}</label>
-									
-									<div ng-hide="isEditing" class="jumbotron translated-board">
-										<div 
-												class="edit-button" 
-												ng-show="formData.originalPhrase && formData.translatedPhrase"
-												uib-tooltip="{{appMessage.system.home.tooltipSendSuggestion}}" 
-												tooltip-placement="left" 
-												tooltip-class="tooltip-color" 
-											>
-											<a href="" ng-click="edit()">
-												<i class="icon-pencil" aria-hidden="true"></i>
-											</a>
-										</div>
-										<p>
-											{{formData.translatedPhrase}}
-										</p>
+								<label ng-hide="manezes">{{appMessage.system.home.manezes}}</label>
+								<label ng-show="manezes">{{appMessage.system.home.portugues}}</label>
+								
+								<div ng-hide="isEditing" class="jumbotron translated-board">
+									<div 
+											class="edit-button" 
+											ng-show="formData.originalPhrase && formData.translatedPhrase"
+											uib-tooltip="{{appMessage.system.home.tooltipSendSuggestion}}" 
+											tooltip-placement="left" 
+											tooltip-class="tooltip-color" 
+										>
+										<a href="" ng-click="edit()">
+											<i class="icon-pencil" aria-hidden="true"></i>
+										</a>
 									</div>
-								  	
-								  	<textarea 
-								  		ng-show="isEditing" 
-								  		ng-model="formData.translatedPhrase" 
-								  		class="form-control" 
-								  		rows="3" 
-								  		maxlength="200">
-								  	</textarea>
-								
+									<p>
+										{{formData.translatedPhrase}}
+									</p>
 								</div>
-								
-								<div class="send-traduction-feedback" ng-if="showSendTraductionsFeedback">
-									{{appMessage.system.home.sendTraductionFeedback}} 
-									<i class="icon-smile" aria-hidden="true"></i>
-								</div>
-								
-								<div class="action-buttons">
-								
-							        <button type="button" class="btn btn-primary" ng-click="translate()" ng-disabled="!formData.originalPhrase || formData.originalPhrase.length === 1">
-				                    	{{appMessage.system.home.translate}}
-				                    </button>
-				                    
-									<button type="button" class="btn btn-primary" ng-click="invert()">
-					                 	{{appMessage.system.home.invert}}
-					                </button>
-									
-									<button 
-										ng-show="isEditing" 
-										type="button" 
-										class="btn btn-primary" 
-										ng-click="sendTraduction()" 
-										ng-disabled="(!formData.originalPhrase || !formData.translatedPhrase) || (formData.originalPhrase.toLowerCase() === formData.translatedPhrase.toLowerCase())"
-									>
-										{{appMessage.system.home.buttonSendSuggestion}}
-					                </button>
-				                
-				                </div>
-				                
+							  	
+							  	<textarea 
+							  		ng-show="isEditing" 
+							  		ng-model="formData.translatedPhrase" 
+							  		class="form-control" 
+							  		rows="3" 
+							  		maxlength="200">
+						</textarea>
+							
 							</div>
 							
-	                    </div>												
-                	</div>
-                </form>
-            </div>
-        </div>
-    </div>
+							<div class="send-traduction-feedback" ng-if="showSendTraductionsFeedback">
+								{{appMessage.system.home.sendTraductionFeedback}} 
+								<i class="icon-smile" aria-hidden="true"></i>
+							</div>
+							
+							<div class="action-buttons">
+								
+						        <button type="button" class="btn btn-primary" ng-click="translate()" ng-disabled="!formData.originalPhrase || formData.originalPhrase.length === 1">
+						                 	{{appMessage.system.home.translate}}
+						                 </button>
+						                 
+								<button type="button" class="btn btn-primary" ng-click="invert()">
+						               	{{appMessage.system.home.invert}}
+						              </button>
+								
+								<button 
+									ng-show="isEditing" 
+									type="button" 
+									class="btn btn-primary" 
+									ng-click="sendTraduction()" 
+									ng-disabled="(!formData.originalPhrase || !formData.translatedPhrase) || (formData.originalPhrase.toLowerCase() === formData.translatedPhrase.toLowerCase())"
+								>
+									{{appMessage.system.home.buttonSendSuggestion}}
+						              </button>
+						             
+						    </div>
+						             
+						</div>
+		
+					</div>												
+				</div>
+	     	</form>
+		</div>
+	</div>
     
 </header>
