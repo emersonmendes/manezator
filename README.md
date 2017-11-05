@@ -1,13 +1,14 @@
 # Manezator
 
 
--- [Install mongodb](https://docs.mongodb.com/manual/installation/)
+-- Create DEV database:
 
--- create dev database:
+	- $ mongo
+	- $ use manezatordb
+	- $ db.createUser({user:"manezator", pwd:"manezator", roles:[{role:"dbOwner", db: "manezatordb"}]})
 
-- db.createUser({user:"manezator", pwd:"manezator", roles:[{role:"dbOwner", db: "manezatordb"}]})
+-- Run app:
 
--- run app
-- mvn clean install 
-- mvn spring-boot:run
+	- $ mvn clean install 
+	- $ mvn spring-boot:run
 

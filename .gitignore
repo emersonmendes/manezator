@@ -1,4 +1,4 @@
-.settings/**
+.settings
 
 # Created by .ignore support plugin (hsz.mobi)
 *.class
@@ -46,3 +46,5 @@ buildNumber.properties
 /.classpath
 /.project
 /bin/
+bin
+.vscode/*
