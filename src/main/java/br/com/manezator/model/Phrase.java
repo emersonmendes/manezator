@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Emerson Mendes
  * @mail emerson.emendes@gmail.com
  **/
-
 @Document
 public class Phrase {
 	
