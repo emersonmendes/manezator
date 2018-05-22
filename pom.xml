@@ -56,6 +56,16 @@
 		        <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
 	    	</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.3</version>
+				<configuration>
+					<processTypes>
+						<web>java -Dserver.port=$PORT -Dmongodb.host=$MOGODB_HOST -Dmongodb.port=$MOGODB_PORT -Dmongodb.database=$MOGODB_DATABASE -Dmongodb.username=$MOGODB_USERNAME -Dmongodb.password=$MOGODB_PASSWORD $JAVA_OPTS -jar target/manezator.jar</web>
+					</processTypes>
+				</configuration>
+			</plugin>
 	    </plugins>
   	</build>
   	
@@ -65,5 +75,6 @@
   	 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
 
 </project>
