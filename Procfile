@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dmongodb.host=$MOGODB_HOST -Dmongodb.port=$MOGODB_PORT -Dmongodb.database=$MOGODB_DATABASE -Dmongodb.username=$MOGODB_USERNAME -Dmongodb.password=$MOGODB_PASSWORD $JAVA_OPTS -jar target/manezator.jar
