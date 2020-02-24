@@ -1,7 +1,7 @@
 # Manezator
 
 
--- Create DEV database:
+-- Create dev database:
 
 	- $ mongo
 	- $ use manezatordb
