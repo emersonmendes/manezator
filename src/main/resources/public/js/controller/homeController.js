@@ -81,7 +81,9 @@ app.controller('HomeCtrl', function (
 	};
 	
 	$scope.findPhrases = function(phrase){	
-		return homeService.findPhrases(phrase, $scope.manezes);
+		var phrases = homeService.findPhrases(phrase, $scope.manezes);
+		$scope.translate();
+		return phrases;
 	};
 	
 	$scope.selectedItemChange = function(item){

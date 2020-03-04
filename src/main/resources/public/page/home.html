@@ -70,13 +70,13 @@
 							
 							<div class="action-buttons">
 								
-						        <button type="button" class="btn btn-primary" ng-click="translate()" ng-disabled="!formData.originalPhrase || formData.originalPhrase.length === 1">
-						                 	{{appMessage.system.home.translate}}
-						                 </button>
+<!--						        <button type="button" class="btn btn-primary" ng-click="translate()" ng-disabled="!formData.originalPhrase || formData.originalPhrase.length === 1">-->
+<!--									{{appMessage.system.home.translate}}-->
+<!--								 </button>-->
 						                 
 								<button type="button" class="btn btn-primary" ng-click="invert()">
-						               	{{appMessage.system.home.invert}}
-						              </button>
+									{{appMessage.system.home.invert}}
+							  	</button>
 								
 								<button 
 									ng-show="isEditing" 
@@ -86,7 +86,7 @@
 									ng-disabled="(!formData.originalPhrase || !formData.translatedPhrase) || (formData.originalPhrase.toLowerCase() === formData.translatedPhrase.toLowerCase())"
 								>
 									{{appMessage.system.home.buttonSendSuggestion}}
-						              </button>
+								</button>
 						             
 						    </div>
 						             

@@ -48,3 +48,6 @@ buildNumber.properties
 /bin/
 bin
 .vscode/*
+data/
+.idea/**
+manezetor.iml
