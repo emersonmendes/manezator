@@ -41,24 +41,6 @@ public class PhraseServiceImpl implements PhraseService {
 
     }
 
-    public static void main(String[] args) {
-
-        List<String> lista = new ArrayList<>();
-
-        lista.add("cachorro");
-        lista.add("é");
-        lista.add("muito");
-        lista.add("feio");
-        lista.add("branco");
-
-        List<String> phrases = getAllPossibleTexts(lista);
-
-        for (String word : phrases) {
-            System.out.println(word);
-        }
-
-    }
-
     private static List<String> getAllPossibleTexts(List<String> lista) {
         final String[] array = lista.toArray(new String[]{});
 	    List<String> result = new ArrayList<>();
