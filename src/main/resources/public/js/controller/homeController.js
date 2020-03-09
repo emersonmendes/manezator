@@ -4,6 +4,8 @@ app.controller('HomeCtrl', function (
 	
 	$scope.traductions = [];
 
+	var lastTranslatedPhrase = "";
+
 	$scope.manezes = false;
 	$scope.formData = {
 		originalPhrase : "",
@@ -48,6 +50,10 @@ app.controller('HomeCtrl', function (
 	$scope.translate = function(){
 		
 		$scope.cleanSendTraductionsFeedback();
+
+		if(lastTranslatedPhrase === $scope.formData.originalPhrase){
+            return;
+		}
 		
 		homeService.translate($scope.formData.originalPhrase, $scope.manezes, (result) => {
 			
@@ -59,6 +65,8 @@ app.controller('HomeCtrl', function (
 				$scope.traductions = angular.copy(result.traductions);
 				$scope.isEditing = false;
 			}
+
+			lastTranslatedPhrase = angular.copy($scope.formData.originalPhrase);
 			
 		});
 		

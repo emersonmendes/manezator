@@ -3,8 +3,12 @@ package br.com.manezator.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,9 @@ public class PhraseServiceImpl implements PhraseService {
 	
 	public Phrase translate(String originalPhraseText, Boolean manezes) {
 
- 	    final Phrase phrase = phraseRepository.findOneByTextAndManezes(originalPhraseText.toLowerCase().trim(), manezes);
+        final String trimmedText = originalPhraseText.toLowerCase().trim();
+
+        final Phrase phrase = getPhrase(trimmedText, manezes);
 
         final String[] splitPhrase = originalPhraseText.split(" ");
 
@@ -31,30 +37,79 @@ public class PhraseServiceImpl implements PhraseService {
             return phrase;
         }
 
-        AtomicReference<String> translatedPhraseTextAR = new AtomicReference<>("");
+        return translateSplit(originalPhraseText, manezes, splitPhrase);
 
-        Stream.of(splitPhrase).forEach(text -> {
+    }
 
-            final String trimmedText = text.toLowerCase().trim();
+    public static void main(String[] args) {
 
-            if(trimmedText.equals("")){
-               return;
+        List<String> lista = new ArrayList<>();
+
+        lista.add("cachorro");
+        lista.add("é");
+        lista.add("muito");
+        lista.add("feio");
+        lista.add("branco");
+
+        List<String> phrases = getAllPossibleTexts(lista);
+
+        for (String word : phrases) {
+            System.out.println(word);
+        }
+
+    }
+
+    private static List<String> getAllPossibleTexts(List<String> lista) {
+        final String[] array = lista.toArray(new String[]{});
+	    List<String> result = new ArrayList<>();
+	    int count = 1;
+	    while (count < array.length){
+            for (int i = 0; i < array.length; i++) {
+                String word = "";
+                if((count + i) > array.length){
+                    continue;
+                }
+                for (int j = i; j < (count + i); j++) {
+                    word = word.concat(array[j]).concat(" ");
+                }
+                result.add(word.trim());
             }
+            count++;
+        }
+	    return result;
+    }
 
-            final Phrase p = phraseRepository.findOneByTextAndManezes(trimmedText, manezes);
+    private Phrase getPhrase(String trimmedText, Boolean manezes) {
+        return phraseRepository.findOneByTextAndManezes(trimmedText, manezes);
+    }
 
-            if(p == null){
-                translatedPhraseTextAR.set(translatedPhraseTextAR.get().concat(trimmedText));
-            } else {
-                translatedPhraseTextAR.set(translatedPhraseTextAR.get().concat(p.getTraductions().get(0).getText()));
+    private Phrase translateSplit(String originalPhraseText, Boolean manezes, String[] splitPhrase) {
+
+	    String translatedPhraseText = originalPhraseText;
+
+        final List<String> allPossibleTexts = getAllPossibleTexts(splitOriginalPhraseText(splitPhrase));
+
+        Map<String,String> translatedMap = new HashMap<>();
+
+        for (String text : allPossibleTexts) {
+            final Phrase p = getPhrase(text, manezes);
+            if(p != null){
+                translatedMap.put(text, p.getTraductions().get(0).getText());
             }
+        }
 
-            translatedPhraseTextAR.set(translatedPhraseTextAR.get() + SPACE);
+        for (String key : translatedMap.keySet()) {
+            translatedPhraseText = translatedPhraseText.replace(key, translatedMap.get(key));
+        }
 
-        });
+        return buildPhrase(originalPhraseText, translatedPhraseText, manezes);
 
-        return buildPhrase(originalPhraseText, translatedPhraseTextAR.get(), manezes);
+    }
 
+    private List<String> splitOriginalPhraseText(String[] splitPhrase) {
+        return Stream.of(splitPhrase)
+            .filter(text -> !text.toLowerCase().trim().equals(""))
+            .collect(Collectors.toList());
     }
 
     private Phrase buildPhrase(String originalPhraseText, String translatedPhraseText, Boolean manezes) {
@@ -78,7 +133,7 @@ public class PhraseServiceImpl implements PhraseService {
 
 	private void saveTraduction(String originalPhrase, String translatedPhrase, Boolean manezes) {
 		
-		Phrase phrase = phraseRepository.findOneByTextAndManezes(originalPhrase, manezes);
+		Phrase phrase = getPhrase(originalPhrase, manezes);
 		
 		if(phrase == null){
 			Phrase newPhrase = new Phrase();
